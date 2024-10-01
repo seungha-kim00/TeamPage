@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <header>
+        <h1>Spring Sprinters</h1>
+        <nav>
+            <ul>
+                <li><a href="#team" id="team-tab">Team</a></li>
+                <li><a href="#members" id="members-tab">Members</a></li>
+                <li><a href="#news" id="news-tab">News</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section id="team-section" class="content active">
+            <h2>About Us</h2>
+            <img src="team-logo.png" alt="Team Logo" class="team-logo">
+            <p>Welcome to Spring Sprinters! We are a group of passionate developers learning Spring.</p>
+        </section>
+
+        <section id="members-section" class="content">
+            <h2>Team Members</h2>
+            <div id="member-cards"></div>
+            <form id="add-member-form">
+                <h3>Add a New Member</h3>
+                <label for="name">Name:</label>
+                <input type="text" id="name" required>
+                <label for="mbti">MBTI:</label>
+                <input type="text" id="mbti" required>
+                <label for="photo">Photo:</label>
+                <input type="file" id="photo" required>
+                <button type="submit">Add Member</button>
+            </form>
+        </section>
+
+        <section id="news-section" class="content">
+            <h2>Latest News</h2>
+            <div id="news-list">Loading news...</div>
+        </section>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
