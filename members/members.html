@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Members - Spring Sprinters</title>
+    <link rel="stylesheet" href="../styles.css">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+</head>
+
+<body>
+    <header>
+        <h1>Spring Sprinters</h1>
+        <nav>
+            <ul>
+                <li><a href="../index.html">Team</a></li>
+                <li><a href="../members/members.html">Members</a></li>
+                <li><a href="../news/news.html">News</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section id="members-section">
+            <div class="p-5 mb-4 bg-body-tertiary rounded-3">
+                <div class="container-fluid py-5">
+                    <h2 class="display-5 fw-bold">Spring Sprinters</h2>
+                    <p class="col-md-8 fs-4">Spring 7기 11조 Spring Sprinter 멤버로 참여하세요!</p>
+                    <button id="savebtn" type="button" class="btn btn-outline-dark">참여 폼 열기/닫기</button>
+                </div>
+            </div>
+
+            <div class="mypostingbox" id="postingbox">
+                <div class="form-floating mb-3">
+                    <label for="floatingInput">비밀번호</label>
+                    <input type="text" class="form-control" id="member_pw" placeholder="****">
+                </div>
+                <div class="form-floating mb-3">
+                    <label for="floatingInput">이름</label>
+                    <input type="text" class="form-control" id="member_name" placeholder="홍길동">
+                </div>
+                <div class="form-floating mb-3">
+                    <label for="floatingInput">MBTI</label>
+                    <input type="text" class="form-control" id="member_mbti" placeholder="INFP">
+                </div>
+                <div class="form-floating mb-3">
+                    <label for="floatingInput">Github주소</label>
+                    <input type="text" class="form-control" id="member_git" placeholder="https://github.com/userid">
+                </div>
+                <div class="form-floating mb-3">
+                    <label for="floatingInput">blog주소</label>
+                    <input type="text" class="form-control" id="member_blog" placeholder="https://velog.io/@ID/posts">
+                </div>
+                <div class="form-floating mb-3">
+                    <label for="floatingInput">장점</label>
+                    <input type="text" class="form-control" id="member_strength" placeholder="저의 장점은 ...">
+
+                </div>
+                <div class="form-floating mb-3">
+                    <label for="floatingInput">협업스타일</label>
+                    <input type="text" class="form-control" id="member_style" placeholder="저의 협업스타일은 ...">
+                </div>
+                <div class="form-floating mb-3">
+                    <label for="floatingInput">좋아하는 것</label>
+                    <input type="text" class="form-control" id="member_favorate" placeholder="제가 좋아하는 것은 ...">
+                </div>
+                <button id="postingbtn" type="button" class="btn btn-danger">등록하기</button>
+                <button id="postingcancelbtn" type="button" class="btn btn-danger">내용지우기</button>
+            </div>
+
+            <!-- Delete confirmation popup -->
+            <!-- <div id="delete-popup"
+                style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.5);">
+                <div
+                    style="background-color: white; padding: 20px; margin: 100px auto; width: 300px; border-radius: 8px;">
+                    <h4>정말로 삭제하시겠습니까?</h4>
+                    <label for="delete-pw">비밀번호:</label>
+                    <input type="password" id="delete-pw" class="form-control" placeholder="비밀번호를 입력하세요">
+                    <div style="margin-top: 10px;">
+                        <button id="confirm-delete" class="btn btn-danger">확인</button>
+                        <button id="cancel-delete" class="btn btn-secondary">취소</button>
+                    </div>
+                </div>
+            </div> -->
+
+            <h2>Team Members</h2>
+            <!-- Example Member Card List -->
+            <div id="member-cards" class="card-list">
+            </div>
+        </section>
+    </main>
+
+    <script src="../script.js" type="module">
+        // Function to delete member with password verification
+        function deleteMember(docId) {
+            console.log(docId);
+            // const memberPw = prompt("정말로 삭제하시겠습니까? 비밀번호를 입력하세요:");
+            // if (memberPw === null) {
+            //     return; // If canceled, do nothing
+            // }
+
+            // // Firestore: check if password matches and delete document
+            // const docRef = doc(db, "teampage", docId);
+            // getDoc(docRef).then((doc) => {
+            //     if (doc.exists()) {
+            //         const storedPw = doc.data().member_pw;
+            //         if (storedPw === memberPw) {
+            //             deleteDoc(docRef).then(() => {
+            //                 alert("멤버가 삭제되었습니다.");
+            //                 window.location.reload();
+            //             }).catch((error) => {
+            //                 console.error("Error removing document: ", error);
+            //             });
+            //         } else {
+            //             alert("비밀번호가 일치하지 않습니다.");
+            //         }
+            //     } else {
+            //         alert("해당 문서를 찾을 수 없습니다.");
+            //     }
+            // }).catch((error) => {
+            //     console.log("Error getting document:", error);
+            // });
+        }
+    </script>
+</body>
+
+</html>
