@@ -1,3 +1,4 @@
+
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-app.js";
 import { getFirestore } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore.js";
 import { collection, addDoc } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore.js";
@@ -23,6 +24,8 @@ $("#postingbtn").click(async function () {
     let merit = $('#merit').val();
     let teamstyle = $('#teamstyle').val();
     let favorite = $('#favorite').val();
+    let github = $('#github').val();
+    let blog = $('#blog').val();
 
     let doc = {
         'image': image,
@@ -30,7 +33,9 @@ $("#postingbtn").click(async function () {
         'mbti': mbti,
         'merit': merit,
         'teamstyle': teamstyle,
-        'favorite': favorite
+        'favorite': favorite,
+        'github': github,
+        'blog': blog
     };
 
     await addDoc(collection(db, "teammate"), doc);
@@ -81,13 +86,15 @@ $('.col').click(async function () {
         let merit = row['merit'];
         let teamstyle = row['teamstyle'];
         let favorite = row['favorite'];
+        let github = row['github'];
+        let blog = row['blog'];
 
         //모달 바디 생성 
         if (id_check == name) {
-            let temp_html2 = `    
-            <div class="modal_body" id="modal_body">
+            let temp_html2 = `
+            <div  id="modal_body" class="screen">
     <div class="container1">
-        <h2 class="name" id="modal_name">${name}</h2>
+        <h1 class="name" id="modal_name">${name}</h2>
         <button class="exit_btn" id="exit_btn"></button>
     </div>
 
@@ -105,33 +112,39 @@ $('.col').click(async function () {
         </div>
     </div>
 
-    <!-- 코멘트  -->
-    <div class="name_area">
-        <h2>coment</h2>
-        <p>한마디~~</p>
+    <!-- github 및 블로그 주소  -->
+    <div class="site_area">
+        <button class="github_btn" id="github_btn" button type="button" onclick="location.href='${github}'">
+        </button>
+        <button class="blog_btn" id="blog_btn" button type="button" onclick="location.href='${blog}'">
+        </button>
     </div>
 </div>`;
-
             $('#modal').append(temp_html2);
         }
     })
+    
     const btnOpenModal = document.getElementById('myteammate');
     const closeModalBtn = document.getElementById('exit_btn');
-    const modal = document.getElementById('modal_body');
+    const modal = document.getElementById('modal');
+    const modal_body = document.getElementById('modal_body');
 
     btnOpenModal.addEventListener("click", () => {
         modal.classList.remove('hidden');
+        modal_body.classList.add('screen')
     });
 
     // X버튼으로 모달창 닫기(modal_body 삭제)
     closeModalBtn.addEventListener('click', () => {
-        modal.remove('modal_body');
+        modal_body.remove('modal_body');
+        modal.classList.add('hidden');
     });
 
     //window영역 클릭시 모달창 닫기
     window.addEventListener('click', (e) => {
         if (e.target === modal) {
-            modal.remove('modal_body');
+        modal_body.remove('modal_body');
+        modal.classList.add('hidden');
         }
     });
 });
