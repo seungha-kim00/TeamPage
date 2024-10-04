@@ -319,7 +319,7 @@ $("#close").click(async function () {
 
 
 
-const modalOpenBtn = document.getElementById('card');
+const modalOpenBtn = document.getElementById('individual');
 const modalCloseBtn = document.getElementById('modalCloseBtn');
 const modal = document.getElementById('modalContainer');
 
