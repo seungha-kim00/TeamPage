@@ -15,16 +15,23 @@
 </head>
 
 <body>
-    <header>
-        <h1>Spring Sprinters</h1>
-        <nav>
-            <ul>
-                <li><a href="./index.html" id="team-tab">Team</a></li>
-                <li><a href="./members/members.html" id="members-tab">Members</a></li>
-                <li><a href="./news/news.html" id="news-tab">News</a></li>
-            </ul>
-        </nav>
-    </header>
+    <nav class="navbar navbar-expand-lg navbar-light bg-white py-3">
+        <div class="container px-5">
+            <a class="navbar-brand" href="index.html"><span class="logo"><img src="../membercards/img/logo.png" width="300px"
+                        alt=""></span></a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav ms-auto mb-2 mb-lg-0 small fw-bolder">
+
+                    <li class="nav-item"><a class="nav-link" href="../index.html">Team</a></li>
+                    <li class="nav-item"><a class="nav-link" href="">Members</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../news/news.html">News</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
 
     <main>
         <section id="team-section" class="content active">
@@ -32,31 +39,6 @@
             <img src="team-logo.png" alt="Team Logo" class="team-logo">
             <p>Welcome to Spring Sprinters! We are a group of passionate developers learning Spring.</p>
         </section>
-        <button id="postingbtn" type="button" class="btn btn-danger">등록하기</button>
-        
-        <!-- Popup for adding/editing member -->
-        <!-- <div id="member-popup" class="popup">
-            <div class="popup-content">
-                <span class="close-btn">&times;</span>
-                <h3>Add/Edit Member</h3>
-                <form id="member-form">
-                    <input type="hidden" id="edit-index" value="-1">
-                    <label for="popup-name">Name:</label>
-                    <input type="text" id="popup-name" required>
-                    <label for="popup-mbti">MBTI:</label>
-                    <input type="text" id="popup-mbti" required>
-                    <label for="popup-photo">Photo:</label>
-                    <input type="file" id="popup-photo">
-                    <button type="submit">Save</button>
-                </form>
-            </div>
-        </div>
-        
-
-        <section id="news-section" class="content">
-            <h2>Latest News</h2>
-            <div id="news-list">Loading news...</div>
-        </section> -->
     </main>
 
     <script src="script.js" type="module"></script>
