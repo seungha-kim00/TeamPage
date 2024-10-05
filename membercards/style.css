@@ -112,7 +112,7 @@ input::placeholder {
     object-fit: fill;
 }
 
-.card-title {
+.col .card-title {
     position: absolute;
     bottom: 5%;
     right: 7%;
