@@ -1,6 +1,5 @@
 /* News */
-@import url(./news/css/news.css);
-@import url(./news/css/loadingbar.css);
+@import url(./news/client/news.css);
 
 body {
   font-family: Arial, sans-serif;
@@ -265,7 +264,7 @@ input::placeholder {
   object-fit: fill;
 }
 
-.card-title {
+/* .card-title {
   position: absolute;
   bottom: 5%;
   right: 7%;
@@ -275,7 +274,7 @@ input::placeholder {
   border-radius: 10%;
   font-size: 1.5em;
   font-weight: 900;
-}
+} */
 
 .card-mbti {
   position: absolute;
