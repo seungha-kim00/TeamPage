@@ -1,5 +1,6 @@
 /* News */
 @import url(./news/client/news.css);
+@import url(./memberDetail/memberDetail.css);
 
 body {
   font-family: Arial, sans-serif;
