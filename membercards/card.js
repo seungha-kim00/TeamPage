@@ -99,18 +99,9 @@ docs.forEach((doc) => {
     // <p class="card-text">blog 주소: ${blog}</p>
 
     let temp_html = `
-            <div class="col">
+            <div class="col" id="${name}">
                 <div class="card h-100">
                     <div class="card-header">
-                        <input type="text" class="form-control" id="edit_pw_${doc.id}" placeholder="****">
-                        <button class="btn btn-sm btn-outline-secondary float-right editbtn" data-id="${doc.id}">수정</button>
-                        <button class="btn btn-sm btn-outline-danger float-right deletebtn" data-id="${doc.id}">삭제</button>
-                        <a href="${github}" target="_blank" class="social-icon">
-                            <img src="https://cdn-icons-png.flaticon.com/512/25/25231.png" alt="GitHub" style="width:30px; height:30px; border-radius:50%;">
-                        </a>
-                        <a href="${blog}" target="_blank" class="social-icon">
-                            <img src="https://cdn-icons-png.flaticon.com/512/732/732200.png" alt="Blog" style="width:30px; height:30px; border-radius:50%;">
-                        </a>
                     </div>
                     <img src="${image}" class="card-img" alt="...">
                     <h5 class="card-title text-center mb-3">${name}</h5>
@@ -170,6 +161,9 @@ $(document).on("click", ".editbtn", async function () {
 
         // 비밀번호가 일치하는지 확인
         if (inputPw === storedPw) {
+            modalContainer.classList.add('hidden');
+            modalContainer_body.remove('modalContainer_body');
+
             // postingbox를 visible로 변경
             $('#postingbox').css('display', 'block');
 
@@ -303,6 +297,18 @@ $(document).on("click", ".editbtn", async function () {
 // new version
 $("#close").click(async function () {
     $('#postingbox').toggle();
+    $("#join").toggle();
+})
+
+$("#join").click(async function () {
+    $('#postingbox').toggle();
+    // "내용지우기" 버튼을 "원래대로" 버튼으로 변경
+    $("#join").toggle(); // 내용지우기 버튼 숨기기
+    
+    // if (!$("#join").length) {
+    //     const joinButton = `<button id="joinbtn" class="btn btn-primary">멤버추가</button>`;
+    //     $("#postingbox").append(recoverButton); // 수정하기 버튼 추가
+    // }
 })
 
 // old version
@@ -311,17 +317,101 @@ $("#close").click(async function () {
 // })
 
 
+let row = null
+$('.col').click(async function () {
+    // 클릭한 대상의 이름 가져오는거 확인용 
+    var id_check = $(this).attr("id");
+    console.log(id_check);
 
+    docs.forEach((doc) => {
+        row = doc.data();
+        let image = row['image']; // 이미지 관련해서는 수정 필요!!!!!
+        let name = row['name'];
+        let pwd = row['pwd'];
+        let mbti = row['mbti'];
+        let strength = row['strength'];
+        let style = row['style'];
+        let like = row['like'];
+        let github = row['github'];
+        let blog = row['blog'];
 
+        //모달 바디 생성 
+        if (id_check == name) {
+            let temp_html2 = `
+            <div  id="modalContainer_body" class="screen">
+    <div class="container1">
+        <h1 class="name" id="modalContainer_name">${name}</h1>
+        <input type="text" class="form-control" id="edit_pw_${doc.id}" placeholder="****">
+        <button class="btn btn-sm btn-outline-secondary float-right editbtn" data-id="${doc.id}"></button>
+        <button class="btn btn-sm btn-outline-danger float-right deletebtn" data-id="${doc.id}"></button>
+        <button class="modalCloseBtn" id="modalCloseBtn"></button>
+    </div>
 
-const modalOpenBtn = document.getElementById('individual');
-const modalCloseBtn = document.getElementById('modalCloseBtn');
-const modal = document.getElementById('modalContainer');
+    <!-- 사진 -->
+    <div class="container2">
+        <div class="picture"><img src="${image}" alt="..." class = "picture1">
+        </div>
 
-modalOpenBtn.addEventListener('click', () => {
-    modal.classList.remove('hidden');
+        <!-- 자기소개부분 -->
+        <div class="tmi">
+            <div class="mbti" id="modalContainer_mbti">MBTI : ${mbti}</div>
+            <div class="strength" id="modalContainer_strength">장점 :${strength}</div>
+            <div class="style" id="modalContainer_style">협업스타일 :${style}</div>
+            <div class="like" id="modalContainer_like">좋아하는것 : ${like}</div>
+        </div>
+    </div>
+
+    <!-- github 및 블로그 주소  -->
+    <div class="site_area">
+        <button class="github_btn" id="github_btn" button type="button" onclick="location.href='${github}'">
+        </button>
+        <button class="blog_btn" id="blog_btn" button type="button" onclick="location.href='${blog}'">
+        </button>
+    </div>
+
+</div>`;
+            $('#modalContainer').append(temp_html2);
+        }
+    })
+
+    const btnOpenmodalContainer = document.getElementById('card');
+    const closemodalContainerBtn = document.getElementById('modalCloseBtn');
+    const modalContainer = document.getElementById('modalContainer');
+    const modalContainer_body = document.getElementById('modalContainer_body');
+
+    btnOpenmodalContainer.addEventListener("click", () => {
+        modalContainer.classList.remove('hidden');
+        modalContainer_body.classList.add('screen')
+    });
+
+    // X버튼으로 모달창 닫기(modalContainer_body 삭제)
+    closemodalContainerBtn.addEventListener('click', () => {
+        modalContainer.classList.add('hidden');
+        modalContainer_body.remove('modalContainer_body');
+    });
+
+    //window영역 클릭시 모달창 닫기
+    window.addEventListener('click', (e) => {
+        if (e.target === modalContainer) {
+            modalContainer_body.remove('modalContainer_body');
+            modalContainer.classList.add('hidden');
+        }
+    });
 });
 
-modalCloseBtn.addEventListener('click', () => {
-    modal.classList.add('hidden');
-});
+
+
+
+
+
+// const modalOpenBtn = document.getElementById('individual');
+// const modalCloseBtn = document.getElementById('modalCloseBtn');
+// const modal = document.getElementById('modalContainer');
+
+// modalOpenBtn.addEventListener('click', () => {
+//     modal.classList.remove('hidden');
+// });
+
+// modalCloseBtn.addEventListener('click', () => {
+//     modal.classList.add('hidden');
+// });
