@@ -24,7 +24,7 @@ function getNewsByQuery(host, port, query) {
       if (!response.ok) {
         throw new Error("Network response was not ok " + response.statusText);
       }
-      console("Network response was ok" + response.statusText);
+      console.log("Network response was ok" + response.statusText);
       return response.json();
     })
     .then((data) => {
