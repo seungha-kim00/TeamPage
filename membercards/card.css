@@ -1,168 +1,151 @@
-@import url('https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Gowun+Dodum&family=Jua&family=Nanum+Pen+Script&family=Titan+One&display=swap');
-
-
-body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-    background-color: white;
-}
-
-hr {
-    width: 1200px;
-    margin-left: auto;
-    margin-right: auto;
-}
-
+@import url("https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Gowun+Dodum&family=Jua&family=Nanum+Pen+Script&family=Titan+One&display=swap");
 
 .formbox {
-
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 .mypostingbox {
-    margin-top: 10px;
-    background-color: rgba(255, 181, 22, 0.08);
-    border-radius: 7px;
-    padding: 20px;
-    width: 500px;
-    height: 770px;
+  margin-top: 10px;
+  background-color: rgba(255, 181, 22, 0.08);
+  border-radius: 7px;
+  padding: 20px;
+  width: 500px;
+  height: 770px;
 }
 
 input::placeholder {
-    color: black;
+  color: black;
 }
 
 .fileBox .fileName {
-    display: inline-block;
-    width: 350px;
-    height: 57px;
-    padding-left: 10px;
-    margin-right: 5px;
-    line-height: 30px;
-    border: 1px solid #caced4;
-    border-radius: 5px;
-    background-color: #fff;
-    vertical-align: middle
+  display: inline-block;
+  width: 350px;
+  height: 57px;
+  padding-left: 10px;
+  margin-right: 5px;
+  line-height: 30px;
+  border: 1px solid #caced4;
+  border-radius: 5px;
+  background-color: #fff;
+  vertical-align: middle;
 }
 
 .fileBox .btn_file {
-    display: inline-block;
-    color: white;
-    background-color: #7e7e7e;
-    border-radius: 4px;
-    width: 90px;
-    height: 40px;
-    font-size: 1em;
-    line-height: 40px;
-    text-align: center;
-    vertical-align: middle;
-    margin-left: 5px;
+  display: inline-block;
+  color: white;
+  background-color: #7e7e7e;
+  border-radius: 4px;
+  width: 90px;
+  height: 40px;
+  font-size: 1em;
+  line-height: 40px;
+  text-align: center;
+  vertical-align: middle;
+  margin-left: 5px;
 }
 
 .btn_file:hover {
-    background-color: rgb(0, 119, 255);
-    color: white;
-    cursor: pointer;
+  background-color: rgb(0, 119, 255);
+  color: white;
+  cursor: pointer;
 }
 
 .fileBox input[type="file"] {
-    position: absolute;
-    width: 1px;
-    height: 1px;
-    padding: 0;
-    margin: -1px;
-    overflow: hidden;
-    clip: rect(0, 0, 0, 0);
-    border: 0
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  border: 0;
 }
 
 .btn:hover {
-    background-color: rgb(0, 119, 255);
-    color: white;
+  background-color: rgb(0, 119, 255);
+  color: white;
 }
 
 .membercards {
-    width: 1200px;
-    margin: 30px auto 30px auto;
+  width: 1200px;
+  margin: 30px auto 30px auto;
 }
 
 .card {
-    box-shadow: 0px 0px 1px 0px rgb(212, 212, 212);
-    border-radius: 3%;
-    position: relative;
-    display: inline-block;
-    overflow: hidden;
-    padding: 1px;
+  box-shadow: 0px 0px 1px 0px rgb(212, 212, 212);
+  border-radius: 3%;
+  position: relative;
+  display: inline-block;
+  overflow: hidden;
+  padding: 1px;
 }
 
 .card:hover {
-    transform: scale(1.05);
-    box-shadow: 1px 1px 7px rgb(204, 204, 204);
-    cursor: pointer;
+  transform: scale(1.05);
+  box-shadow: 1px 1px 7px rgb(204, 204, 204);
+  cursor: pointer;
 }
 
 .card-img {
-    width: 100%;
-    height: 100%;
-    object-fit: fill;
+  width: 100%;
+  height: 100%;
+  object-fit: fill;
 }
 
 .col .card-title {
-    position: absolute;
-    bottom: 5%;
-    right: 7%;
-    color: white;
-    background: rgba(0, 0, 0, 0.5);
-    padding: 5px;
-    border-radius: 10%;
-    font-size: 1.5em;
-    font-weight: 900;
+  position: absolute;
+  bottom: 5%;
+  right: 7%;
+  color: white;
+  background: rgba(0, 0, 0, 0.5);
+  padding: 5px;
+  border-radius: 10%;
+  font-size: 1.5em;
+  font-weight: 900;
 }
 
 .card-mbti {
-    position: absolute;
-    width: 100px;
-    height: auto;
-    text-align: center;
-    color: #f7f1f1;
-    font-size: 2em;
-    font-family: 'Arial';
-    font-weight: bold;
-    padding: 5px 10px;
-    left: -10px;
-    top: 3px;
-    transform: rotate(-30deg);
-    text-shadow: 0px 0px 8px rgba(0, 0, 0);
-    font-family: "Titan One", sans-serif;
-    font-weight: 400;
-    font-style: normal;
+  position: absolute;
+  width: 100px;
+  height: auto;
+  text-align: center;
+  color: #f7f1f1;
+  font-size: 2em;
+  font-family: "Arial";
+  font-weight: bold;
+  padding: 5px 10px;
+  left: -10px;
+  top: 3px;
+  transform: rotate(-30deg);
+  text-shadow: 0px 0px 8px rgba(0, 0, 0);
+  font-family: "Titan One", sans-serif;
+  font-weight: 400;
+  font-style: normal;
 }
 
 #modalContainer {
-    width: 100%;
-    height: 100%;
-    position: fixed;
-    top: 0;
-    left: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background: rgba(0, 0, 0, 0.5);
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: rgba(0, 0, 0, 0.5);
 }
 
 #modalContent {
-    position: absolute;
-    background-color: #ffffff;
-    width: 400px;
-    height: 600px;
-    padding: 15px;
+  position: absolute;
+  background-color: #ffffff;
+  width: 400px;
+  height: 600px;
+  padding: 15px;
 }
 
 #modalContainer.hidden {
-    display: none;
+  display: none;
 }

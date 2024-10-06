@@ -1,4 +1,4 @@
-const myIpAddress = "192.168.0.105";
+const myIpAddress = "192.168.0.105"; //
 const portNumber = "3000";
 let query = "";
 
@@ -6,17 +6,16 @@ let query = "";
 $("#newsFetchButton").on("click", () => {
   // query 예외처리
   quer = "";
-  query = $("#searchQuery").val();
-  if (query === "") {
-    alert("검색할 단어를 입력해주세요");
-    return;
-  }
+  query = $("#searchQuery").val(); // DOM에서 query 값 가져옴
+
+  validateDataQuery(query); // query 검증
+
   getNewsByQuery(myIpAddress, portNumber, query);
 });
 
 // HTTP GET 요청
 function getNewsByQuery(host, port, query) {
-  const url = `http://${host}:${port}/news?query=${query}`;
+  const url = `https://${host}:${port}/news?query=${query}`;
 
   console.log(url);
 
@@ -25,9 +24,13 @@ function getNewsByQuery(host, port, query) {
       if (!response.ok) {
         throw new Error("Network response was not ok " + response.statusText);
       }
+      console.log("Network response was ok" + response.statusText);
       return response.json();
     })
     .then((data) => {
+      console.log(data);
+      validateData(data); // 데이터 검증
+
       const newsCardsContainer = $("#news_cards");
       newsCardsContainer.empty(); // 추가 검색 시, DOM 업데이트가 안되는 오류가 발생 -> 재요청 시 DOM 삭제 후 생성
       data.forEach((item) => renderNewsCard(item, newsCardsContainer));
@@ -35,6 +38,20 @@ function getNewsByQuery(host, port, query) {
     .catch((error) => {
       console.error("There was a problem with the fetch operation:", error);
     });
+}
+
+function validateDataQuery(query) {
+  if (query === "") {
+    alert("검색할 단어를 입력해주세요");
+    return;
+  }
+}
+
+function validateData(data) {
+  if (data.length === 0) {
+    alert("유효한 단어를 입력해주세요");
+    return;
+  }
 }
 
 // News_Card DOM 동적 생성

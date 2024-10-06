@@ -1,5 +1,6 @@
 /* News */
 @import url(./news/client/news.css);
+@import url(./membercards/card.css);
 @import url(./memberDetail/memberDetail.css);
 
 body {
@@ -322,10 +323,9 @@ input::placeholder {
 
 /* 예지님 코드 끝 */
 
-
 .container1 {
   display: flex;
-  flex-direction: row; 
+  flex-direction: row;
   align-items: center;
   justify-content: center;
   /* gap: 15px; 요소 간 간격 추가 */
