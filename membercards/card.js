@@ -121,51 +121,6 @@ docs.forEach((doc) => {
 
 });
 
-// old version
-// const querySnapshot = await getDocs(collection(db, "teampage"));
-// querySnapshot.forEach((doc) => {
-//     let member_name = doc.data().member_name;
-//     let member_mbti = doc.data().member_mbti;
-//     let member_git = doc.data().member_git;
-//     let member_blog = doc.data().member_blog;
-//     let member_strength = doc.data().member_strength;
-//     let member_style = doc.data().member_style;
-//     let member_favorate = doc.data().member_favorate;
-
-//     let temp_html = ` 
-//     <div class="col">
-//         <div class="card">
-//             <div class="card-header">
-//                 <input type="text" class="form-control" id="edit_pw_${doc.id}" placeholder="****">
-//                 <button class="btn btn-sm btn-outline-secondary float-right editbtn" data-id="${doc.id}">수정</button>
-//                 <button class="btn btn-sm btn-outline-danger float-right deletebtn" data-id="${doc.id}">삭제</button>
-//             </div>
-//             <img src="https://gongtalk.co.kr/profile_basic.jpeg" class="card-img-top" alt="Profile Image">
-//             <div class="card-body">
-//                 <h5 class="card-title">${member_name}</h5>
-//                 <p class="card-text">MBTI: ${member_mbti}</p>
-//                 <p class="card-text">Strength: ${member_strength}</p>
-//                 <p class="card-text">Collaboration Style: ${member_style}</p>
-//                 <p class="card-text">Favorites: ${member_favorate}</p>
-//             </div>
-//             <div class="card-footer text-center">
-//                 <a href="${member_git}" target="_blank" class="social-icon">
-//                     <img src="https://cdn-icons-png.flaticon.com/512/25/25231.png" alt="GitHub" style="width:30px; height:30px; border-radius:50%;">
-//                 </a>
-//                 <a href="${member_blog}" target="_blank" class="social-icon">
-//                     <img src="https://cdn-icons-png.flaticon.com/512/732/732200.png" alt="Blog" style="width:30px; height:30px; border-radius:50%;">
-//                 </a>
-//             </div>
-//         </div>
-//     </div>`;
-//     $("#member-cards").append(temp_html);
-// });
-
-
-
-
-
-
 
 // 삭제 이벤트 처리
 $(document).on("click", ".deletebtn", async function () {
@@ -237,24 +192,61 @@ $(document).on("click", ".editbtn", async function () {
 
             // 수정하기 버튼 클릭 시 기존 데이터 업데이트
             $("#editbtn_submit").off('click').on("click", async function () {
-                const updatedData = {
-                    pwd: $('#pwd').val(),
-                    name: $('#name').val(),
-                    mbti: $('#mbti').val(),
-                    github: $('#github').val(),
-                    blog: $('#blog').val(),
-                    strength: $('#strength').val(),
-                    style: $('#style').val(),
-                    like: $('#like').val()
-                };
+                console.log($('#image').val() == '');
+                console.log($('#image').val());
 
-                try {
-                    // 문서 업데이트
-                    await updateDoc(docRef, updatedData);
-                    alert("멤버 정보가 수정되었습니다.");
-                    window.location.reload(); // 수정 후 페이지 새로고침
-                } catch (e) {
-                    console.error("Error updating document: ", e);
+                if ($('#image').val() == '') {
+                    const updatedData = {
+                        // image: $('#image').val(),
+                        pwd: $('#pwd').val(),
+                        name: $('#name').val(),
+                        mbti: $('#mbti').val(),
+                        github: $('#github').val(),
+                        blog: $('#blog').val(),
+                        strength: $('#strength').val(),
+                        style: $('#style').val(),
+                        like: $('#like').val()
+                    };
+
+                    try {
+                        // 문서 업데이트
+                        await updateDoc(docRef, updatedData);
+                        alert("멤버 정보가 수정되었습니다.");
+                        window.location.reload(); // 수정 후 페이지 새로고침
+                    } catch (e) {
+                        console.error("Error updating document: ", e);
+                    }
+                }
+                else {
+                    // 멤버 이미지 추가
+                    var file = document.querySelector('#image').files[0];
+                    var imageRef = ref(storage, `images/${file.name}`);
+                    console.log('imageRef: ', imageRef);
+                    var upload = await uploadBytes(imageRef, file);
+                    console.log('upload: ', upload);
+                    const imageURL = await getDownloadURL(imageRef);
+                    console.log('imageURL: ', imageURL);
+
+                    const updatedData = {
+                        image: imageURL,
+                        pwd: $('#pwd').val(),
+                        name: $('#name').val(),
+                        mbti: $('#mbti').val(),
+                        github: $('#github').val(),
+                        blog: $('#blog').val(),
+                        strength: $('#strength').val(),
+                        style: $('#style').val(),
+                        like: $('#like').val()
+                    };
+
+                    try {
+                        // 문서 업데이트
+                        await updateDoc(docRef, updatedData);
+                        alert("멤버 정보가 수정되었습니다.");
+                        window.location.reload(); // 수정 후 페이지 새로고침
+                    } catch (e) {
+                        console.error("Error updating document: ", e);
+                    }
                 }
             });
 
@@ -268,6 +260,9 @@ $(document).on("click", ".editbtn", async function () {
 
             // 원래대로 버튼 클릭 시 수정 폼 값을 DB의 값으로 복원
             $("#editbtn_recover").off('click').on("click", async function () {
+                $('#image').val('');
+                $('#fileName').val('');
+                // document.querySelector('#image').files[0] = '';
                 $('#pwd').val(docSnapshot.data().pwd);
                 $('#name').val(docSnapshot.data().name);
                 $('#mbti').val(docSnapshot.data().mbti);
