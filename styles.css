@@ -1,7 +1,7 @@
 /* News */
 @import url(./news/client/news.css);
-@import url(./membercards/card.css);
 @import url(./memberDetail/memberDetail.css);
+@import url(./membercards/card.css);
 
 body {
   font-family: Arial, sans-serif;
@@ -265,18 +265,6 @@ input::placeholder {
   height: 100%;
   object-fit: fill;
 }
-
-/* .card-title {
-  position: absolute;
-  bottom: 5%;
-  right: 7%;
-  color: white;
-  background: rgba(0, 0, 0, 0.5);
-  padding: 5px;
-  border-radius: 10%;
-  font-size: 1.5em;
-  font-weight: 900;
-} */
 
 .card-mbti {
   position: absolute;
