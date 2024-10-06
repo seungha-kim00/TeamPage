@@ -321,3 +321,33 @@ input::placeholder {
 }
 
 /* 예지님 코드 끝 */
+
+
+.container1 {
+  display: flex;
+  flex-direction: row; 
+  align-items: center;
+  justify-content: center;
+  /* gap: 15px; 요소 간 간격 추가 */
+  /* padding: 20px; 컨테이너 내부 여백 추가 */
+  /* background-color: #ffffff; 배경색 추가로 구분 명확히 */
+  /* border-radius: 10px; 모서리 둥글게 */
+}
+
+.container1 h1 {
+  font-size: 24px;
+  margin-bottom: 10px;
+  writing-mode: horizontal-tb; /* 텍스트를 가로로 씀 */
+  text-orientation: mixed; /* 텍스트 방향을 가로로 설정 */
+}
+
+.container1 input {
+  /* padding: 10px; */
+  width: 80%;
+  /* margin-bottom: 10px; */
+}
+
+.container1 button {
+  padding: 8px 8px;
+  margin: 5px;
+}

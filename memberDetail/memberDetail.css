@@ -199,7 +199,7 @@ body {
 }
 
 .name {
-    width: 300px;
+    width: 600px;
     font-weight: bold;
     font-size: 7;
     margin-right: 70%;
@@ -221,6 +221,25 @@ body {
     background-position: center;
     background-size: cover;
 }
+
+.editbtn {
+    width: 30px;
+    height: 30px;
+    background-image: url('https://cdn-icons-png.flaticon.com/128/16016/16016218.png');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+}
+
+.deletebtn {
+    width: 30px;
+    height: 30px;
+    background-image: url('https://cdn-icons-png.flaticon.com/128/9790/9790368.png');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+}
+
 
 .container2 {
     display: flex;
