@@ -1,4 +1,4 @@
-const myIpAddress = "172.30.1.1"; // 192.168.0.105
+const myIpAddress = "192.168.0.105"; //
 const portNumber = "3000";
 let query = "";
 
@@ -24,6 +24,7 @@ function getNewsByQuery(host, port, query) {
       if (!response.ok) {
         throw new Error("Network response was not ok " + response.statusText);
       }
+      console("Network response was ok" + response.statusText);
       return response.json();
     })
     .then((data) => {
@@ -39,7 +40,7 @@ function getNewsByQuery(host, port, query) {
     });
 }
 
-function validateDataQuery() {
+function validateDataQuery(query) {
   if (query === "") {
     alert("검색할 단어를 입력해주세요");
     return;
