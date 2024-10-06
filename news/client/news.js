@@ -1,4 +1,4 @@
-const myIpAddress = "192.168.0.105";
+const myIpAddress = "172.30.1.1"; // 192.168.0.105
 const portNumber = "3000";
 let query = "";
 
@@ -16,7 +16,7 @@ $("#newsFetchButton").on("click", () => {
 
 // HTTP GET 요청
 function getNewsByQuery(host, port, query) {
-  const url = `http://${host}:${port}/news?query=${query}`;
+  const url = `https://${host}:${port}/news?query=${query}`;
 
   console.log(url);
 
